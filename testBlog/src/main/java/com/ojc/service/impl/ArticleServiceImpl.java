@@ -69,10 +69,21 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
         //查询categoryName
         List<Article> articles = page.getRecords();
+
+
+
         articles.stream()
                 .map(article ->
                         article.setCategoryName(categoryService.getById(article.getCategoryId()).getName()))
                 .collect(Collectors.toList());
+
+        /*String categoryTest;
+        for (Article article : articles) {
+            Long article1 = article.getCategoryId();
+
+            Category category = categoryService.getById(article1);
+            article.setCategoryName(category.getName());
+        }*/
 
         //封装查询结果
         List<ArticleListVo> articleListVos = BeanCopyUtils.copyBeanList(page.getRecords(), ArticleListVo.class);
