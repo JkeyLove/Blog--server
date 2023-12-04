@@ -2,19 +2,22 @@ server:
   port: 7777
 spring:
   redis:
-    #host: 114.132.67.226
+    host: 114.132.67.226
     port: 6379
-    #password: abC123456@
+    password: abC123456@
   main:
     allow-circular-references: true
   datasource:
-    #url: jdbc:mysql://114.132.67.226:3306/sg_blog?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    #username: xiaoli
-    #password: abC123456@
-    url: jdbc:mysql://127.0.0.1:3306/sg_blog?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 123456
+    url: jdbc:mysql://114.132.67.226:3306/sg_blog?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: xiaoli
+    password: abC123456@
+    #url: jdbc:mysql://127.0.0.1:3306/sg_blog?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    #username: root
+    #password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      max-lifetime: 180000
   servlet:
     multipart:  #限制文件上传大小
       max-file-size: 2MB
@@ -22,7 +25,7 @@ spring:
 mybatis-plus:
   configuration:
     # 日志
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl:
   global-config:
     db-config:
       logic-delete-field: delFlag
